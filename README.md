@@ -4,7 +4,7 @@ Um aplicativo para você ver os jogos da rodada do brasileirão e os lances de c
 
 |Tela de Games|Tela de Detalhes|
 |---|---|
-|![alt text](https://i.ibb.co/4MCyxLV/Screenshot-at-Oct-21-13-26-33.png)|![alt text](https://i.ibb.co/h7zf4pS/Screenshot-at-Oct-21-13-31-33.png)|
+|![image](https://user-images.githubusercontent.com/71989413/120498044-4def3d80-c395-11eb-8601-2df5722a7387.png)|![alt text](https://i.ibb.co/h7zf4pS/Screenshot-at-Oct-21-13-31-33.png)|
 ---
 ### Arquitetura
 Esse projeto se basea nos conceitos de arqutiterura, do [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) e se utilizando da estrutura do **MVVM**. Abaixo segue o gráfico de dependencia do aplicativo.
