@@ -84,4 +84,9 @@ dependencies {
     implementation AndroidX.transition
     implementation AndroidX.recyclerview
     implementation AndroidX.swiperefreshlayout
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
