@@ -1,0 +1,87 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion Versions.compileSdk
+
+    defaultConfig {
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode 1
+        versionName "1.0"
+
+        vectorDrawables.useSupportLibrary true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+    buildTypes {
+        release {
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs += 'src/main/kotlin'
+            res.srcDirs = ['src/main/res-accessibility',
+                           'src/main/res-address',
+                           'src/main/res-splash',
+                           'src/main/res-authentication',
+                           'src/main/res-common',
+                           'src/main/res-search',
+                           'src/main/res-navigation',
+                           'src/main/res-restaurant',
+                           'src/main/res-waiting',
+                           'src/main/res-order',
+                           'src/main/res-checkout',
+                           'src/main/res-guestuser',
+                           'src/main/res-authentication',
+                           'src/main/res-discovery/',
+                           'src/main/res-launcher-icon/',
+                           'src/main/res-init',
+                           'src/main/res-minibanner',
+                           'src/main/res-banner']
+        }
+    }
+}
+
+androidExtensions {
+    experimental = true
+}
+
+dependencies {
+
+    implementation project(Modules.core)
+
+    implementation Kotlin.stdlib
+    implementation Lifecycle.viewModel
+    implementation Lifecycle.liveData
+    implementation Lifecycle.commonJava8
+    implementation Lifecycle.navigationFragment
+    implementation Glide.glide
+    kapt Glide.compiler
+
+    implementation AndroidX.design
+    implementation AndroidX.fragment
+    implementation AndroidX.appcompat
+    implementation AndroidX.transition
+    implementation AndroidX.recyclerview
+    implementation AndroidX.swiperefreshlayout
+}

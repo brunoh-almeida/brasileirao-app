@@ -1,0 +1,24 @@
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
+
+sourceSets {
+  main.kotlin.srcDirs += 'src/main/kotlin'
+}
+
+repositories {
+  mavenCentral()
+}
+
+test {
+  testLogging {
+    exceptionFormat = 'full'
+  }
+}
+
+dependencies {
+  implementation Kotlin.stdlib
+  implementation project(Modules.core)
+
+  testImplementation JUnit.core
+  testImplementation Kotlin.junit
+}

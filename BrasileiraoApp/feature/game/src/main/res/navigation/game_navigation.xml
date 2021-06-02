@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/game_navigation"
+    app:startDestination="@id/gameListFragment">
+
+    <fragment
+        android:id="@+id/gameListFragment"
+        android:name="br.com.brasileiraoapp.view.list.GameListFragment"
+        android:label="GameListFragment">
+        <action
+            android:id="@+id/actionGameListFragmentToGameDetailFragment"
+            app:destination="@id/gameDetailFragment"
+            app:popUpTo="@id/gameListFragment">
+            <argument
+                android:name="game"
+                app:argType="br.com.brasileiraoapp.presentation.model.GameModel"/>
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/gameDetailFragment"
+        android:name="br.com.brasileiraoapp.view.detail.GameDetailFragment"
+        android:label="fragment_game_detail"
+        tools:layout="@layout/fragment_game_detail">
+        <argument
+            android:name="game"
+            app:argType="br.com.brasileiraoapp.presentation.model.GameModel"/>
+    </fragment>
+</navigation>

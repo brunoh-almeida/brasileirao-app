@@ -1,0 +1,75 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply from: "$rootDir/spotless.gradle"
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.1"
+
+    defaultConfig {
+        applicationId "br.com.brasileiraoapp.brasileiraoapp"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/AL2.0'
+        exclude("META-INF/*.kotlin_module")
+    }
+
+    android {
+        compileOptions {
+            sourceCompatibility 1.8
+            targetCompatibility 1.8
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'com.android.support:multidex:1.0.3'
+
+    implementation project(Modules.core)
+    implementation project(Modules.coreAndroid)
+    implementation project(Modules.gameRepository)
+    implementation project(Modules.gameRepositoryImpl)
+    implementation project(Modules.gameUseCase)
+    implementation project(Modules.gameUseCaseImpl)
+    implementation project(Modules.gameFeature)
+    implementation project(Modules.database)
+
+    implementation Koin.core
+    implementation AndroidX.appcompat
+    implementation Stetho.stetho
+    implementation AndroidX.constraintLayout
+    implementation Lifecycle.navigationFragment
+    implementation Lifecycle.navigationUi
+
+
+}

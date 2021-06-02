@@ -1,0 +1,10 @@
+include ':database'
+include ':core-android'
+include ':core'
+include ':app'
+include ':repository:game-impl'
+include ':repository:game-public'
+include ':usecase:game-public'
+include ':usecase:game-impl'
+include ':feature:game'
+rootProject.name = "Brasileirao App"

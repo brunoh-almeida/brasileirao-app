@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="gameModel"
+            type="br.com.brasileiraoapp.presentation.model.GameModel" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="@+id/date"
+            app:layout_constraintStart_toEndOf="@+id/date">
+
+            <ImageView
+                android:id="@+id/team_away"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/away_goals"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="10dp"
+                android:text="@{gameModel.teamHome.name}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/team_home"
+                app:layout_constraintStart_toStartOf="@+id/team_home"
+                app:layout_constraintTop_toBottomOf="@+id/team_home"
+                tools:text="São Caetano" />
+
+            <TextView
+                android:id="@+id/away_goals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:includeFontPadding="true"
+                android:text="@{gameModel.awayGoals}"
+                android:textSize="28sp"
+                app:layout_constraintBottom_toBottomOf="@+id/placar_x"
+                app:layout_constraintStart_toEndOf="@+id/placar_x"
+                app:layout_constraintTop_toTopOf="@+id/placar_x"
+                tools:text="1" />
+
+            <TextView
+                android:id="@+id/placar_x"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:text="X"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@+id/stadium"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_half_vertical"
+                app:layout_constraintStart_toStartOf="@+id/guideline_half_vertical"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/home_goals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="25dp"
+                android:includeFontPadding="true"
+                android:text="@{gameModel.homeGoals}"
+                android:textSize="28sp"
+                app:layout_constraintBottom_toBottomOf="@+id/placar_x"
+                app:layout_constraintEnd_toStartOf="@+id/placar_x"
+                app:layout_constraintTop_toTopOf="@+id/placar_x"
+                tools:text="1" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="10dp"
+                android:text="@{gameModel.teamAway.name}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/team_away"
+                app:layout_constraintStart_toStartOf="@+id/team_away"
+                app:layout_constraintTop_toBottomOf="@+id/team_away"
+                tools:text="Palmeiras" />
+
+            <TextView
+                android:id="@+id/stadium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{gameModel.stadium}"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_half_vertical"
+                app:layout_constraintStart_toStartOf="@+id/guideline_half_vertical"
+                app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal"
+                tools:text="Palmeiras" />
+
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@{gameModel.gameDate}"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/stadium"
+                app:layout_constraintStart_toStartOf="@+id/stadium"
+                app:layout_constraintTop_toBottomOf="@+id/stadium"
+                tools:text="Palmeiras" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_half_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.6" />
+
+
+            <ImageView
+                android:id="@+id/team_home"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toStartOf="@+id/home_goals"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

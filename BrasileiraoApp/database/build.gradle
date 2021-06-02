@@ -1,0 +1,11 @@
+apply from: "$rootDir/config-android-module.gradle"
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    implementation project(Modules.core)
+    implementation(Room.ktx)
+    implementation(Room.runtime)
+    implementation(Room.test)
+    testImplementation(MockK.core)
+    kapt(Room.compiler)
+}

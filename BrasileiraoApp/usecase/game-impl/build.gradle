@@ -1,0 +1,8 @@
+apply from: "$rootDir/config-kotlin-module.gradle"
+
+dependencies {
+    implementation project(Modules.gameUseCase)
+    implementation project(Modules.gameRepository)
+
+    implementation MockK.core
+}

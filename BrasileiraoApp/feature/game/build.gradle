@@ -1,0 +1,45 @@
+apply from: "$rootDir/config-android-module.gradle"
+
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+android{
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+dependencies {
+    implementation project(Modules.gameUseCase)
+    implementation project(Modules.coreAndroid)
+    implementation project(Modules.core)
+
+    implementation AndroidX.constraintLayout
+    implementation AndroidX.appcompat
+    implementation AndroidX.ktx
+    implementation AndroidX.recyclerview
+    implementation AndroidX.design
+    implementation AndroidX.swiperefreshlayout
+
+    implementation Coroutines.core
+    implementation Coroutines.android
+    implementation Coroutines.test
+
+    implementation Lottie.lottie
+
+    implementation Lifecycle.viewModel
+    implementation Lifecycle.liveData
+    implementation Lifecycle.extensions
+    implementation Lifecycle.commonJava8
+    implementation Lifecycle.navigationFragment
+
+    implementation Glide.glide
+    kapt Glide.compiler
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    implementation Koin.core
+    implementation Koin.koinLifecycle
+    implementation Koin.koinViewModel
+
+}

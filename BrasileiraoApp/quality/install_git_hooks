@@ -1,0 +1,6 @@
+#!/bin/bash
+
+ROOT_FOLDER=$(git rev-parse --show-toplevel)
+mkdir -p .git/hooks_bak
+cp $ROOT_FOLDER/.git/hooks/* $ROOT_FOLDER/.git/hooks_bak
+ln -sf $ROOT_FOLDER/.hooks/* $ROOT_FOLDER/.git/hooks

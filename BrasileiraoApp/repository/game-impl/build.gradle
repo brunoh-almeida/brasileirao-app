@@ -1,0 +1,9 @@
+apply from: "$rootDir/config-android-module.gradle"
+
+dependencies {
+    implementation project(Modules.gameRepository)
+    implementation project(Modules.database)
+    testImplementation Kotlin.stdlib
+
+    implementation MockK.core
+}

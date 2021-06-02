@@ -1,0 +1,22 @@
+static def isLinuxOrMacOs() {
+  def osName = System.getProperty('os.name').toLowerCase(Locale.ROOT)
+  return osName.contains('linux') || osName.contains('mac os') || osName.contains('macos')
+}
+
+def outputDir = "${project.buildDir}/outputs/git-hooks"
+def inputFiles = project.fileTree(dir: ".hooks")
+
+task installGitHooks(type: Exec) {
+  group 'Quality'
+  description 'Installs the git hooks from .hooks'
+  onlyIf { isLinuxOrMacOs() }
+
+  workingDir rootDir
+  commandLine "quality/install_git_hooks"
+
+  doLast { logger.info('Git hook installed successfully.') }
+
+  inputs.files(inputFiles)
+  outputs.dir(outputDir)
+  outputs.cacheIf { true }
+}

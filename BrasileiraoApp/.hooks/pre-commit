@@ -1,0 +1,26 @@
+#!/bin/sh
+# https://github.com/shyiko/ktlint pre-commit hook
+
+git merge HEAD &>/dev/null
+merge_status=$?
+
+# Skips validation for merge commits
+if [[ ${merge_status} -ne 0 ]]; then
+  echo "Skipping validation for merge commit"
+  echo "Done"
+  exit 0
+fi
+
+VERSION=0.39.0
+ROOT_FOLDER=$(git rev-parse --show-toplevel)
+
+if ! command -v $ROOT_FOLDER/ktlint_$VERSION &> /dev/null
+then
+  rm -f $ROOT_FOLDER/ktlint*
+  echo "You don't have the latest version of this repository's ktlint, downloading..."
+	curl -o $ROOT_FOLDER/ktlint_$VERSION -L https://github.com/pinterest/ktlint/releases/download/$VERSION/ktlint
+	chmod +x $ROOT_FOLDER/ktlint_$VERSION
+fi
+
+git diff --name-only --cached --relative | grep '\.kt[s"]\?$' | xargs $ROOT_FOLDER/ktlint_$VERSION --relative .
+if [ $? -ne 0 ]; then exit 1; fi
